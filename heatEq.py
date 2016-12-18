@@ -12,14 +12,14 @@ dt = (1. / (2. * D)) * dx * dx
 INTV = 3000
 
 def initFunc(x):
-	a = 1./2
-	return math.exp( - 100 * (x - a) * (x - a))
+    a = 1./2
+    return math.exp( - 100 * (x - a) * (x - a))
 
 def nextStep(u):
-	uNext = [0] * dim
-	for i in range(1, dim-1):
-		uNext[i] = u[i] + dt * D * (u[i-1] - 2.*u[i] + u[i+1])
-	return uNext
+    uNext = [0] * dim
+    for i in range(1, dim-1):
+        uNext[i] = u[i] + dt * D * (u[i-1] - 2.*u[i] + u[i+1])
+    return uNext
 
 # initial condition
 
@@ -28,19 +28,19 @@ ims = []
 
 u = [0] * dim
 for i in range(0, dim):
-	u[i] = initFunc(i * dx)
+    u[i] = initFunc(i * dx)
 
 # time loop
 t = 0.
 i = 0
 
 while t < 100.:
-	u = nextStep(u)
-	t = t + dt;
-	if i % INTV == 0:
-		im = plt.plot(u,"b")
-		ims.append(im)
-	i = i + 1;
+    u = nextStep(u)
+    t = t + dt;
+    if i % INTV == 0:
+        im = plt.plot(u,"b")
+        ims.append(im)
+    i = i + 1;
 
 ani = animation.ArtistAnimation(fig, ims)
 ani.save("heat.gif", writer = "imagemagick")
