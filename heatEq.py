@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 D = 1.
-dim = 33
+dim = 155
 dx = 1. / (dim-1)
 dt = (1. / (2. * D)) * dx * dx
-INTV = 3000
+INTV = 10
 
 def initFunc(x):
     a = 1./2
@@ -18,7 +18,7 @@ def initFunc(x):
 def nextStep(u):
     uNext = [0] * dim
     for i in range(1, dim-1):
-        uNext[i] = u[i] + dt * D * (u[i-1] - 2.*u[i] + u[i+1])
+        uNext[i] = u[i] + dt * D * (u[i-1] - 2.*u[i] + u[i+1]) / (dx * dx)
     return uNext
 
 # initial condition
@@ -34,7 +34,7 @@ for i in range(0, dim):
 t = 0.
 i = 0
 
-while t < 100.:
+while t < 0.1:
     u = nextStep(u)
     t = t + dt;
     if i % INTV == 0:
