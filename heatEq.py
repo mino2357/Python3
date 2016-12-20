@@ -1,4 +1,4 @@
-# soleve the Heat equation 1dim
+# solve the Heat equation 1dim
 # u_t = u_xx x in [0, pi]
 
 import math
@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 D = 1.
-dim = 155
+dim = 55
 dx = 1. / (dim-1)
 dt = (1. / (2. * D)) * dx * dx
 INTV = 10
